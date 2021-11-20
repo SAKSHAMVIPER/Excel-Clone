@@ -109,7 +109,14 @@
               let ridcidobj = getRidCidfromaddress(address);
               let tobechangedCell= document.querySelector(`.grid .cell[rid='${ridcidobj.rid}'][cid='${ridcidobj.cid}']`);
               tobechangedCell.style.textAlignt = hAlignment;
+              let optionElements = allignmentContainer.children;
+              for(let i=0;i<optionElements.length;i++){
+                optionElements[i].classList.remove("selected");
+              }
+
               e.target.classList.add("selected");
+              let cellObject = db[ridcidobj.rid][ridcidobj.cid];
+              cellObject.halign = hAlignment;
         }
     })
 

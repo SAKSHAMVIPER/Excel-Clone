@@ -91,6 +91,23 @@ let ridcidobj = getRidCidfromaddress(prevAddresss);
         underlineIcon.classList.add("selected");
        }
 
+
+       //halignment
+       let optionElements = allignmentContainer.children;
+              for(let i=0;i<optionElements.length;i++){
+                optionElements[i].classList.remove("selected");
+              }
+
+              if (cellObject.halign) {
+                for (let i = 0; i < optionElements.length; i++) {
+                    let elementClasses = optionElements[i].classList;
+                    let hAlignment = elementClasses[elementClasses.length - 1];
+                    if (hAlignment == cellObject.halign) {
+                        elementClasses.add("selected");
+                    }
+                }
+            }
+
     })
     }
 
