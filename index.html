@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="style.css">
+    <title>Saksham's Excel-Clone</title>
+</head>
+
+<body>
+    <div class="menu_bar">
+
+        <!-- new open save -->
+        <div class="new_open_save_container">
+            <div class="icon_container">
+                <i class="fas fa-file"></i>
+            </div>
+            <div class="icon_container">
+                <i class="fas fa-envelope-open"></i>
+            </div>
+            <div class="icon_container">
+                <i class="fas fa-save"></i>
+            </div>
+        </div>
+        <!-- font family and fontsize -->
+        <div class="formatting-container">
+            <select class="font_family_input">
+                <option value="san-serif">Font-1</option>
+                <option value="'Courier New'">Font-2</option>
+                <option value="'Franklin Gothic Medium'">Font-3</option>
+                <option value="Trebuchet MS">Font-4</option>
+                <option value="Georgia">Font-5</option>
+
+            </select>
+
+            <select class="font_size_input">
+                <option value="14">14</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+
+            </select>
+        </div>
+
+        <!-- bosy italic underline -->
+        <div class="bui_container">
+            <i class="fas fa-bold"></i>
+            <i class="fas fa-italic"></i>
+            <i class="fas fa-underline"></i>
+        </div>
+        <!-- color -->
+        <!-- allignment -->
+
+        <div class="allignment_container">
+            <i class="fas fa-align-right"></i>
+            <i class="fas fa-align-center"></i>
+            <i class="fas fa-align-justify"></i>
+            <i class="fas fa-align-left"></i>
+        </div>
+
+        <div class="color-container">
+
+            <i class="fas fa-tint"></i>
+            <i class="fas fa-fill-drip"></i>
+            <input type="color" class="text_color" style="display: none">
+            <input type="color" class="background_color" style="display: none">
+
+        </div>
+    </div>
+    <div class="formula_bar">
+        <input type="text" class="address_input">
+        <!-- <div>:</div> -->
+        <img src="pngwing.com.png" alt="" srcset="">
+        <input type="text" class="formula_input" placeholder="formula">
+
+    </div>
+    <div class="grid_container">
+
+        <div class="top_left_cell">
+
+        </div>
+        <div class="top_row">
+
+        </div>
+        <div class="left_col">
+
+        </div>
+        <div class="grid">
+            <!-- 2d grid -->
+        </div>
+    </div>
+    <div class="sheet_container">sheet container</div>
+    <script src="gridScript.js"></script>
+    <script src="menuScript.js"></script>
+</body>
+
+</html>
