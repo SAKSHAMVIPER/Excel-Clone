@@ -42,6 +42,10 @@ for (let i = 0; i < 100; i++) {
 //if a click on any cell
 let allGridCells = document.querySelectorAll(".grid .cell");
 let addressinput = document.querySelector(".address_input");
+let formulainput = document.querySelector(".formula_input");
+
+//formula input
+
 for (let j = 0; j < allGridCells.length; j++) {
     allGridCells[j].addEventListener("click", function () {
         // alert("hello");
@@ -108,6 +112,12 @@ for (let j = 0; j < allGridCells.length; j++) {
             }
         }
 
+
+      
+            formulainput.value = cellObject.formula;
+            
+       
+
     })
 }
 
@@ -149,7 +159,8 @@ function initDB() {
                 italic: false,
                 underline: false,
                 bold: false,
-                value: ""
+                value: "",
+                formula:""
             }
             rowArr.push(cellObject);
         }
