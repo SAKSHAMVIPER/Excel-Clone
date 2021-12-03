@@ -1,5 +1,21 @@
 let toprow = document.querySelector(".top_row");
 
+let fontfamilyinput = document.querySelector(".font_family_input");
+let fontsizeinput = document.querySelector(".font_size_input");
+let boldIcon = document.querySelector(".fa-bold");
+let italicIcon = document.querySelector(".fa-italic");
+let underlineIcon = document.querySelector(".fa-underline");
+let allignmentContainer = document.querySelector(".allignment_container");
+let textColorHinput = document.querySelector(".text_color");
+let textColorinput = document.querySelector(".fa-tint");
+let backgroundHinput = document.querySelector(".background_color");
+let backgroundinput = document.querySelector(".fa-fill-drip");
+let createSheetIcon = document.querySelector(".fa-plus");
+let sheetList = document.querySelector(".sheets-list");
+let firstSheet = document.querySelector(".sheet");
+
+// -43:40
+
 for (let i = 0; i < 26; i++) {
     let div = document.createElement("div");
     div.textContent = String.fromCharCode(65 + i);
@@ -47,10 +63,9 @@ let formulainput = document.querySelector(".formula_input");
 //formula input
 
 for (let j = 0; j < allGridCells.length; j++) {
-    allGridCells[j].addEventListener("click", function () {
+    allGridCells[j].addEventListener("click", function (e) {
         // alert("hello");
-        let prevAddresss
-            = addressinput.value;
+        let prevAddresss = addressinput.value;
         if (prevAddresss != "") {
             let ridcidobj = getRidCidfromaddress(prevAddresss);
             let prevCell = document.querySelector(`.grid .cell[rid='${ridcidobj.rid}'][cid='${ridcidobj.cid}']`);
@@ -122,31 +137,13 @@ for (let j = 0; j < allGridCells.length; j++) {
 }
 
 
-
-
-//for first cell
-let firstCell = document.querySelector(".grid .cell[rid='0'][cid='0']");
-firstCell.click();
-firstCell.focus();
-// firstCell.style.border = "2px solid green";
-
-function getRidCidfromaddress(address) {
-    let Asciivalue = address.charCodeAt(0);
-    let cid = Asciivalue - 65;
-    let rid = Number(address.substring(1)) - 1;
-    return {
-        rid: rid, cid: cid
-
-    }
-}
-
-
-
 //2way binding*******************************
 //default value for every cell
-let db = [];
+let sheetsDb = [];
 
 function initDB() {
+
+    let db = [];
     for (let i = 0; i < 100; i++) {
         let rowArr = [];
         for (let j = 0; j < 26; j++) {
@@ -160,12 +157,89 @@ function initDB() {
                 underline: false,
                 bold: false,
                 value: "",
-                formula:""
+                formula:"",
+                children: []
             }
             rowArr.push(cellObject);
         }
         db.push(rowArr);
     }
+    sheetsDb.push(db);
 }
 
 initDB();
+
+let db=sheetsDb[0];
+
+//for first cell
+let firstCell = document.querySelector(".grid .cell[rId='0'][cId='0']");
+firstCell.click();
+firstCell.focus();
+
+// firstCell.style.border = "2px solid green";
+
+function getRidCidfromaddress(address) {
+    let Asciivalue = address.charCodeAt(0);
+    let cid = Asciivalue - 65;
+    let rid = Number(address.substring(1)) - 1;
+    return {
+        rid: rid, cid: cid
+
+    }
+}
+
+
+//create sheet icon
+firstSheet.addEventListener("click",function(){
+    for(let i=0;i<sheetList.children.length;i++){
+        sheetList.children[i].classList.remove("active-sheet");
+ }
+ firstSheet.classList.add("active-sheet");
+ db = sheetsDb[0];
+ setinitUI();
+
+})
+
+
+createSheetIcon.addEventListener("click",sheetHandler);
+
+function sheetHandler(){
+    let noofchildren = sheetList.children.length;
+    let newSheet = document.createElement("div");
+    newSheet.setAttribute("class","sheet");
+    
+    newSheet.setAttribute("sheetIdx",noofchildren);
+    newSheet.textContent=`Sheet ${noofchildren+1}`
+    sheetList.appendChild(newSheet);
+    initDB();
+
+    newSheet.addEventListener("click",function(){
+        for(let i=0;i<sheetList.children.length;i++){
+               sheetList.children[i].classList.remove("active-sheet");
+        }
+        newSheet.classList.add("active-sheet");
+        let idx = newSheet.getAttribute("sheetIdx");
+        db=sheetsDb[idx];
+        setinitUI();
+    })
+    newSheet.click();
+}
+
+function sheetopenHandler(){
+    let noofchildren = sheetList.children.length;
+    let newSheet = document.createElement("div");
+    newSheet.setAttribute("class","sheet");
+    newSheet.setAttribute("sheetIdx",noofchildren);
+    newSheet.textContent=`Sheet ${noofchildren+1}`
+    sheetList.appendChild(newSheet);
+
+    newSheet.addEventListener("click",function(){
+        for(let i=0;i<sheetList.children.length;i++){
+               sheetList.children[i].classList.remove("active-sheet");
+        }
+        newSheet.classList.add("active-sheet");
+        let idx = newSheet.getAttribute("sheetIdx");
+        db=sheetsDb[idx];
+        setinitUI();
+    })
+}

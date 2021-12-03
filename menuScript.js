@@ -1,15 +1,3 @@
-let fontfamilyinput = document.querySelector(".font_family_input");
-let fontsizeinput = document.querySelector(".font_size_input");
-let boldIcon = document.querySelector(".fa-bold");
-let italicIcon = document.querySelector(".fa-italic");
-let underlineIcon = document.querySelector(".fa-underline");
-let allignmentContainer = document.querySelector(".allignment_container");
-let textColorHinput = document.querySelector(".text_color");
-let textColorinput = document.querySelector(".fa-tint");
-let backgroundHinput = document.querySelector(".background_color");
-let backgroundinput = document.querySelector(".fa-fill-drip");
-
-
 fontsizeinput.addEventListener("change", function () {
     let fontSize = fontsizeinput.value;
     let address = addressinput.value;

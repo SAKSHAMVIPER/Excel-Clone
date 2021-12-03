@@ -123,10 +123,69 @@ align-items: center;
 }
 
 .sheet_container{
-    /* background-color: rgb(240, 234, 234); */
-   height: 2.5rem;
+     /* background-color:lightgoldenrodyellow;  */
+    height:2.5rem;
+    display: flex;
+    /* justify-content:center; */
+    align-items: center;
+
+
+}
+/* sheets css */
+
+ .add-sheet_container{
+    height: 100%;
+    min-width:30px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.sheets-list{
+
+     display: flex;
+    height: 100%;
+    overflow-x: auto;
 }
 
+
+/* .icon{
+    font-size: 1rem;
+    color: lightgreen;
+} */
+
+.sheets-list::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sheets-list {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+
+
+
+.sheet{
+    min-width:60px;
+    height: 100%;
+     display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: white;
+    border:1px solid;
+}
+
+.active-sheet
+{
+    background-color: gainsboro;
+} 
+
+/* ********************grid ********** */
 .grid_container{
     /* background-color: rgb(240, 234, 234); */
     height:calc(100vh - (5rem + 2rem + 2.5rem) );

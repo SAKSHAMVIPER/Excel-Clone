@@ -3,14 +3,11 @@ let openBtn = document.querySelector(".fa-envelope-open");
 let openInput = document.querySelector(".open_input");
 let newInput = document.querySelector(".fa-file");
 
-
-
 downloadBtn.addEventListener("click", function (e) {
     let a = document.createElement("a");
     // file put -> db array 
-    var StringCode = encodeURIComponent(JSON.stringify(db));
-    var dataStr = "data:text/json;charset=utf-8," +
-        StringCode;
+    var StringCode = encodeURIComponent(JSON.stringify(sheetsDb));
+    var dataStr = "data:text/json;charset=utf-8," + StringCode;
     a.href = dataStr;
     a.download = "file.json";
     // // anchor click
@@ -36,23 +33,33 @@ openInput.addEventListener("change", function (e) {
     reader.readAsText(file);
     reader.addEventListener('load', (event) => {
         let JSONdata = JSON.parse(event.target.result);
-        db = JSONdata;
-        setUI();
+        sheetsDb = JSONdata;
+        db = sheetsDb[0];
+        sheetList.children=[];
+        setinitUI();
+        setSheets();
     });
 })
 
-
+function setSheets(){
+   sheetList.innerHTML="";
+   for(let i=0;i<sheetsDb.length;i++){
+         sheetopenHandler();
+   }
+}
 newInput.addEventListener("click", function () {
     //db reset
-    db = [];
+    sheetsDb = [];
     initDB();
 
     //ui-> map according to new db
-    setUI();
+    setinitUI();
+    setSheets();
+
 
 })
 
-function setUI() {
+function setinitUI() {
     for (let i = 0; i < 100; i++) {
         for (let j = 0; j < 26; j++) {
             //    set all the properties on ui with matchiing rid,cid
